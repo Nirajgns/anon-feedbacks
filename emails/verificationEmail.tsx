@@ -1,4 +1,4 @@
-const {
+import {
   Html,
   Head,
   Font,
@@ -8,7 +8,7 @@ const {
   Section,
   Text,
   Button,
-} = require("@react-email/components");
+} from "@react-email/components";
 
 interface VerificationEmailProps {
   username: string;
