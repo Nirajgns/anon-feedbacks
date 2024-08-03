@@ -46,10 +46,10 @@ export async function GET(request: Request) {
     } else {
       return Response.json(
         {
-          success: false,
+          success: true,
           message: "username is unique",
         },
-        { status: 400 },
+        { status: 200 },
       );
     }
   } catch (error) {

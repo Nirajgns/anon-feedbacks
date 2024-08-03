@@ -1,4 +1,3 @@
-import { error } from "console";
 import mongoose from "mongoose";
 
 type ConnectionObject = {
@@ -13,11 +12,13 @@ async function dbConnect(): Promise<void> {
     return;
   }
   try {
-    const db = await mongoose.connect(process.env.MONGODB_URI || "", {});
+    const db = await mongoose.connect(process.env.MONGODB_URI || "", {
+      retryWrites: true,
+    });
     connection.isConnected = db.connections[0].readyState;
 
     console.log("DB connected successfully");
-  } catch {
+  } catch (error) {
     console.log("DB connection falied", error);
 
     process.exit(1);
